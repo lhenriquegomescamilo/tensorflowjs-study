@@ -20,10 +20,10 @@ function executar() {
     });
 
     const eixoX = tf.tensor([1, 2, 3, 4], [4, 1]);
-    const eixoY = tf.tensor([[10], [20], [30], [40]]);
+    const eixoY = tf.tensor([[11], [22], [33], [44]]);
     const input = tf.tensor([5, 6, 7], [3, 1]);
 
-    model.fit(eixoX, eixoY, {epochs: 500}).then(() => {
+    model.fit(eixoX, eixoY, {epochs: 600}).then(() => {
         const output = model.predict(input).dataSync().map(v => Math.ceil(v));
         const tensorOutput = tf.tensor(output);
 
