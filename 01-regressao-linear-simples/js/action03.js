@@ -39,11 +39,3 @@ function executar() {
 
     });
 }
-
-// function converteArray(array) {
-//     let result = [];
-//     for (let i = 0; i < array.length; i++) {
-//         result.push(Math.ceil(array[i]));
-//     }
-//     return result;
-// }
