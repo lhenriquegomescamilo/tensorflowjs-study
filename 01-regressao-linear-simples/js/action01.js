@@ -1,7 +1,7 @@
 ﻿$('#result').text('');
 
 const tensorEixoX = tf.tensor([2,  4,  6,  8, 10, 12, 14,16,18]);
-const tensorEixoY = tf.tensor([30, 25, 22, 18, 15]);
+const tensorEixoY = tf.tensor([20, 40, 60, 80, 100]);
 
 function exibir(str = '') {
     $('#result').text(str);

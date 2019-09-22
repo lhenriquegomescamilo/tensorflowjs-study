@@ -23,7 +23,7 @@ function executar() {
     const eixoY = tf.tensor([[11], [22], [33], [44]]);
     const input = tf.tensor([5, 6, 7], [3, 1]);
 
-    model.fit(eixoX, eixoY, {epochs: 600}).then(() => {
+    model.fit(eixoX, eixoY, {epochs: 100}).then(() => {
         const output = model.predict(input).dataSync().map(v => Math.ceil(v));
         const tensorOutput = tf.tensor(output);
 
