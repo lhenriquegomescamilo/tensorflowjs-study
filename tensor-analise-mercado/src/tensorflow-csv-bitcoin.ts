@@ -27,25 +27,25 @@ for (let indice = 1; indice < linhas.length; indice++) {
       celula1 = lineCelular1;
     }
     const celula2 = linhas[indice].split(',');
-    const FechamentoX = Number(removeQuote(celula1[1]));
-    const AberturaX = Number(removeQuote(celula1[2]));
-    const MaximaX = Number(removeQuote(celula1[3]));
-    const MinimaX = Number(removeQuote(celula1[4]));
+    const FechamentoX = parseFloat(removeQuote(celula1[1]));
+    const AberturaX = parseFloat(removeQuote(celula1[2]));
+    const MaximaX = parseFloat(removeQuote(celula1[3]));
+    const MinimaX = parseFloat(removeQuote(celula1[4]));
     const dadosEixoX = [FechamentoX, AberturaX, MaximaX, MinimaX];
-    eixoX.push(dadosEixoX);
-    logger.log(dadosEixoX);
 
-    const FechamentoY = Number(removeQuote(celula2[1]));
-    const AberturaY = Number(removeQuote(celula2[2]));
-    const MaximaY = Number(removeQuote(celula2[3]));
-    const MinimaY = Number(removeQuote(celula2[4]));
+    eixoX.push(dadosEixoX);
+    logger.log(dadosEixoX, 'Eixo X' + indice);
+
+    const FechamentoY = parseFloat(removeQuote(celula2[1]));
+    const AberturaY = parseFloat(removeQuote(celula2[2]));
+    const MaximaY = parseFloat(removeQuote(celula2[3]));
+    const MinimaY = parseFloat(removeQuote(celula2[4]));
     const dadoEixoY = [FechamentoY, AberturaY, MaximaY, MinimaY];
     eixoY.push(dadoEixoY);
-    logger.log(dadoEixoY);
-    // }
-    // if (celula1NaoPossuiValoresVazios && celulas2NaoPossuiValoresVazios) {
+
+    logger.log(dadoEixoY, 'eixo Y');
     quantidadeLinhas++;
-    // }
+
   } catch (error) {
     logger.error(error, `erro em ${indice}`);
   }
@@ -53,7 +53,7 @@ for (let indice = 1; indice < linhas.length; indice++) {
 
 const model = tf.sequential({
   layers: [
-    tf.layers.dense({ inputShape: [4], units: 4 }),
+    tf.layers.dense({ inputShape: [4], units: 4}),
   ],
 });
 // const inputLayer = tf.layers.dense({ units: 4, inputShape: [4] });
@@ -71,13 +71,13 @@ const arrInput = [[10.198, 10.303, 10.340, 10.105]]; // "20.09.2019"
 
 const input = tf.tensor(arrInput, [1, 4]);
 
-model.fit(x, y, { epochs: 10000 }).then(() => {
+model.fit(x, y, { epochs: 600 }).then(() => {
   // @ts-ignore
   const output = model.predict(input).dataSync();
   logger.log('PRECO DAS COTACOES BITCOIN');
   logger.log(`Fechamento: \t$ ${Number(output[0].toFixed(3))}`);
   logger.log(`Abertura:   \t$ ${Number(output[1].toFixed(3))}`);
   logger.log(`Maximo:     \t$ ${Number(output[2].toFixed(3))}`);
-  logger.log(`Minimo:     \tR$ ${Number(output[3].toFixed(4))}`);
+  logger.log(`Minimo:     \tR$ ${Number(output[3].toFixed(3))}`);
 });
 // }).catch(error => logger.error(error));
