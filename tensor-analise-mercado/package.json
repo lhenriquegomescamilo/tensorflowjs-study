@@ -27,7 +27,7 @@
     "@tensorflow/tfjs-node-gpu": "^1.2.9",
     "@types/lodash": "^4.14.138",
     "@types/ramda": "^0.26.22",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "ramda": "^0.26.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
